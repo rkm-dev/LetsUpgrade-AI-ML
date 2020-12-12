@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Health Insurance Cost Analysis</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="age" placeholder="Age" required="required" />
+      <input type="text" name="bmi" placeholder="Body Mass Index (BMI)" required="required" />
+      <input type="text" name="children" placeholder="Number of children" required="required" />
+      <div class="radiobtn">
+        <input type="radio" id="nonsmoker" name="smoker" value="0" checked> <label for="nonsmoker">Non-Smoker </label>
+        <input type="radio" id="smoker" name="smoker" value="1"> <label for="smoker">Smoker</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict Insurance Cost</button>
+    </form>
+
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
